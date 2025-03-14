@@ -1,14 +1,17 @@
 "use client";
 
 import * as React from "react";
+import * as DropdownMenuPrimitive from "@radix-ui/react-dropdown-menu";
 import {
   CheckIcon,
   ChevronRightIcon,
   DotFilledIcon,
 } from "@radix-ui/react-icons";
-import { DropdownMenu as DropdownMenuPrimitive } from "radix-ui";
 
-import { cn } from "@acme/ui";
+// Define a utility function for merging class names
+const cn = (...inputs: (string | undefined)[]) => {
+  return inputs.filter(Boolean).join(" ");
+};
 
 const DropdownMenu = DropdownMenuPrimitive.Root;
 const DropdownMenuTrigger = DropdownMenuPrimitive.Trigger;

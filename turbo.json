@@ -43,6 +43,13 @@
     "ui-add": {
       "cache": false,
       "interactive": true
+    },
+    "storybook": {
+      "cache": false,
+      "persistent": true
+    },
+    "build-storybook": {
+      "outputs": ["storybook-static/**"]
     }
   },
   "globalEnv": [

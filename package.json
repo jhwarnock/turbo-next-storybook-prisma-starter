@@ -21,7 +21,9 @@
     "lint:ws": "pnpm dlx sherif@latest",
     "postinstall": "pnpm lint:ws",
     "typecheck": "turbo run typecheck",
-    "ui-add": "turbo run ui-add"
+    "ui-add": "turbo run ui-add",
+    "storybook": "turbo run storybook -F @acme/ui",
+    "build-storybook": "turbo run build-storybook -F @acme/ui"
   },
   "devDependencies": {
     "@acme/prettier-config": "workspace:*",

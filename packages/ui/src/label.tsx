@@ -1,9 +1,12 @@
 import type { VariantProps } from "class-variance-authority";
 import * as React from "react";
+import * as LabelPrimitive from "@radix-ui/react-label";
 import { cva } from "class-variance-authority";
-import { Label as LabelPrimitive } from "radix-ui";
 
-import { cn } from "@acme/ui";
+// Define a utility function for merging class names
+const cn = (...inputs: (string | undefined)[]) => {
+  return inputs.filter(Boolean).join(" ");
+};
 
 const labelVariants = cva(
   "text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70",

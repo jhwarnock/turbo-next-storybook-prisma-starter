@@ -1,6 +1,5 @@
 "use client";
 
-import type { Label as LabelPrimitive } from "radix-ui";
 import type {
   ControllerProps,
   FieldPath,
@@ -10,7 +9,7 @@ import type {
 import type { ZodType, ZodTypeDef } from "zod";
 import * as React from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Slot } from "radix-ui";
+import { Slot } from "@radix-ui/react-slot";
 import {
   useForm as __useForm,
   Controller,
@@ -18,9 +17,12 @@ import {
   useFormContext,
 } from "react-hook-form";
 
-import { cn } from "@acme/ui";
-
 import { Label } from "./label";
+
+// Define a utility function for merging class names
+const cn = (...inputs: (string | undefined)[]) => {
+  return inputs.filter(Boolean).join(" ");
+};
 
 const useForm = <
   TOut extends FieldValues,
@@ -110,8 +112,8 @@ const FormItem = React.forwardRef<
 FormItem.displayName = "FormItem";
 
 const FormLabel = React.forwardRef<
-  React.ElementRef<typeof LabelPrimitive.Root>,
-  React.ComponentPropsWithoutRef<typeof LabelPrimitive.Root>
+  React.ElementRef<typeof Label>,
+  React.ComponentPropsWithoutRef<typeof Label>
 >(({ className, ...props }, ref) => {
   const { error, formItemId } = useFormField();
 
@@ -127,14 +129,14 @@ const FormLabel = React.forwardRef<
 FormLabel.displayName = "FormLabel";
 
 const FormControl = React.forwardRef<
-  React.ElementRef<typeof Slot.Slot>,
-  React.ComponentPropsWithoutRef<typeof Slot.Slot>
+  React.ElementRef<typeof Slot>,
+  React.ComponentPropsWithoutRef<typeof Slot>
 >(({ ...props }, ref) => {
   const { error, formItemId, formDescriptionId, formMessageId } =
     useFormField();
 
   return (
-    <Slot.Slot
+    <Slot
       ref={ref}
       id={formItemId}
       aria-describedby={
